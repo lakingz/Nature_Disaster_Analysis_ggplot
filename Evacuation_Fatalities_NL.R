@@ -2,7 +2,7 @@ library('readr')
 library("lubridate")
 library('rgl')
 library('ggplot2')
-dator <- read_csv("C:/Users/ankai/Desktop/important saves/disaster analysis/data_pop_ud.csv")
+dator <- read_csv("C:/Users/ankai/Desktop/important saves/disaster analysis/Nature_Disaster_Analysis_ggplot/data_pop_ud.csv")
 dator$`EVENT START DATE`[131] <- "2018-01-01"
 
 

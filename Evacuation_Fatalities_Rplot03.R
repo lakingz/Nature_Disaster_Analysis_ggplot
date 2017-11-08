@@ -1,23 +1,8 @@
----
-title: "test1"
-output:
-  pdf_document: default
-  html_document: default
----
-    
-```{r_setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-``    
-
-## R Markdown
-
-
-```{r cars}
 library('readr')
 library("lubridate")
 library('rgl')
 library('ggplot2')
-dator <- read_csv("C:/Users/ankai/Desktop/important saves/disaster analysis/data_pop_ud.csv")
+dator <- read_csv("C:/Users/ankai/Desktop/important saves/disaster analysis/Nature_Disaster_Analysis_ggplot/data_pop_ud.csv")
 dator$`EVENT START DATE`[131] <- "2018-01-01"
 #
 # 
@@ -42,32 +27,9 @@ datplot <- daplot[!(daplot$yp==0 & daplot$z==0),]
 #
 #aes(size=y)
 cols <- c("Flood"= alpha("royalblue",0.7) , "Wildfire"=alpha("firebrick1",0.7))
-g1 <- ggplot(datplot,aes(x,z,color=as.character(type)))+ geom_point(aes(size=y*100))+ 
+ggplot(datplot,aes(x,z,color=as.character(type)))+ geom_point(aes(size=y*100))+ 
   labs(x='EVENT YEAR',y='Fatality',subtitle='Month',size="Eva/Pop(%)", color="Event Type") +
   facet_grid(type~month) + 
   theme(axis.text.x = element_text(angle = 90, hjust = 0.9, vjust = 0.5))+ 
-  geom_vline(xintercept = as.numeric(as.Date("1970-01-01")), linetype=4) + 
+  geom_vline(xintercept = 5)+ 
   scale_colour_manual(values = cols,labels=c("Flood","Wildfire"))
-
-svg("ankai_monthly.svg", width = 10.75, height = 8)
-plot(g1)
-dev.off()
-
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-test_frame <- data.frame(x=rnorm(100),y=1:100)
-m <- cor(test_frame)
-varimax(m)
-coe <- c(2,3)
-test_frame %*% coe
-
-

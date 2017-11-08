@@ -109,3 +109,4 @@ qplot(x, y, data = eg) +
   facet_wrap(~ g) + 
   geom_smooth() + 
   geom_smooth(data = my.data)
+
